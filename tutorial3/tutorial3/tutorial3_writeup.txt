@@ -1,0 +1,38 @@
+a. 
+Pada tutorial ini saya belajar lebih dalam mengenai model dan service. Model merupakan suatu objek yang digunakan untuk merepresentasikan hal-hal seperti sifat, ciri, dll dalam atribut yang dimiliki model. Service adalah layer yang menjadi perantara(bisanya berisi method method kosong yang nantinya dioverride) yang menghubungkan antara controller dengan database(pada tutorial ini database dalam bentuk arraylist pada  class InMemoryStudentService). Selain itu pada tutorial ini juga saya diingatkan kembali cara pengambilan nilai dengan menggunakan path variable yang sebelumnya sudah dipelajari. 
+
+b.
+
+localhost:8080/student/add?npm=12345&name=chanek&gpa=3.43
+Pertanyaan​ ​1​: apakah hasilnya? Jika error, tuliskan penjelasan Anda
+
+hasilnya akan muncul npm, nama, dan gpa dari chanek dengan npm 12345 dan gpa 3.43
+
+localhost:8080/student/add?npm=12345&name=chanek
+Pertanyaan​ ​2:​ ​apakah hasilnya? Jika error, tuliskan penjelasan Anda
+
+Terjadi error karena studentList belum diisi(di add) oleh elemen apapun
+
+localhost:8080/student/add?npm=12345&name=chanek&gpa=3.43 lalu buka
+localhost:8080/student/viewall,
+Pertanyaan​ ​5​: apakah data Student tersebut muncul?
+
+Ya
+
+Coba tambahkan data Student lainnya dengan NPM yang berbeda, lalu buka
+localhost:8080/student/viewall,
+Pertanyaan​ ​6​: Apakah semua data Student muncul?
+
+Ya
+
+c. @Override
+    public StudentModel selectStudent(String npm){
+        for (int i = 0;i < studentList.size(); i++){
+            if(studentList.get(i).getNpm().equals(npm)) {
+                return studentList.get(i);
+            }
+        }
+        return null;
+    }
+
+d. Fitur delete pada dasarnya bekerja sama seperti view dengan path variable. yang membedakan adalah pada fitur delete, kita tidak hanya mencari student dengan npm tertentu saja namun setelah kita mendapatkannya, akan dilakukan proses delete dengan menggunakan method removeStudent() yang saya buat sendiri. Pada akhirnya jika npm berhasil dihapus akan masuk ke detele.html namun jika gagal akan dialihkan ke npm_error.html
